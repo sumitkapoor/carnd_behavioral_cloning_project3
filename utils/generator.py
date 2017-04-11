@@ -23,13 +23,13 @@ def behaviour_cloning_generator(data, batch_size = 128):
 
                 shift = 0
                 if select_camera != 1:
-                    # if camera angle is left, adjust angle by +0.25
-                    # and -0.25 if it's right 
-                    shift = 0.25 if select_camera < 1 else -0.25
+                    # if camera angle is left, adjust angle by +0.2
+                    # and -0.2 if it's right 
+                    shift = 0.2 if select_camera < 1 else -0.2
 
                 y_angle = batch_sample[3]
 
-                if abs(y_angle) > 0.2:
+                if abs(y_angle) > 0.15:
                     y_angle += shift
 
                 image = cv2.imread(img_path)

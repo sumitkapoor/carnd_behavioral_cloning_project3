@@ -27,13 +27,14 @@ def flip_image(image, steer):
     return flipped_image, flipped_steer
 
 def preprocess_image(image):
-    image = image[60:140, 0:320]
-    image = cv2.resize(image, (64, 64), interpolation = cv2.INTER_AREA)
-    image = cv2.cvtColor(image, cv2.COLOR_BGR2RGB)
+    image = image[60:140, :]
+    image = cv2.resize(image, (200, 66), interpolation = cv2.INTER_AREA)
+    image = cv2.cvtColor(image, cv2.COLOR_RGB2YUV)
     return image
 
 def generate_image(image, angle):
-    image = preprocess_image(image)
-    image, angle = trans_image(image, angle, 50, 10)
+    image, angle = trans_image(image, angle, 100, 10)
+    image = cv2.cvtColor(image, cv2.COLOR_BGR2RGB)
     image = brighten_augmentation(image)
+    image = preprocess_image(image)
     return image, angle
