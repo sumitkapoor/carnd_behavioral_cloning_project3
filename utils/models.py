@@ -18,16 +18,23 @@ class Models(object):
         model = Sequential()
         model.add(Lambda(lambda x: x/127.5 - 1.0, input_shape = self.input_shape))
         model.add(Conv2D(24, 5, 5, subsample=(2, 2), border_mode="same", W_regularizer = l2(0.001), activation="elu"))
+        #model.add(SpatialDropout2D(0.7))
         model.add(Conv2D(36, 5, 5, border_mode="same", subsample=(2, 2), W_regularizer = l2(0.001), activation="elu"))
+        #model.add(SpatialDropout2D(0.7))
         model.add(Conv2D(48, 5, 5, border_mode="valid", subsample=(2, 2), W_regularizer = l2(0.001), activation="elu"))
+        #model.add(SpatialDropout2D(0.7))
         model.add(Conv2D(64, 3, 3, border_mode="valid", W_regularizer = l2(0.001), activation="elu"))
+        #model.add(SpatialDropout2D(0.7))
         model.add(Conv2D(64, 3, 3, border_mode="valid", W_regularizer = l2(0.001), activation="elu"))
+
+
         model.add(Flatten())
 
         model.add(Dropout(0.5))
-        model.add(Dense(100, activation="elu", W_regularizer = l2(0.001)))
-        model.add(Dense(50, activation="elu", W_regularizer = l2(0.001)))
-        model.add(Dense(15, activation="elu", W_regularizer = l2(0.001)))
+
+        model.add(Dense(256, activation="elu", W_regularizer = l2(0.001)))
+        model.add(Dense(96, activation="elu", W_regularizer = l2(0.001)))
+        model.add(Dense(24, activation="elu", W_regularizer = l2(0.001)))
         model.add(Dense(1))
 
         return model
