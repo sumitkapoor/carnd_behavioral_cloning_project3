@@ -17,14 +17,16 @@
 
 ## Introduction
 
-Decisions like angle for steering, throttle, brakes, left or right indicators etc has to be taken while driving on roads. Self driving car algorithm needs to learn this and finally manoeuvre. For this the algorithm needs to clone the behavior of a human driving the car.
+Decisions like angle for steering, throttle, brakes, left or right indicators, etc.. has to be taken while driving on roads. Self driving car algorithm needs to learn this and finally manoeuvre. For this the algorithm needs to clone the behavior of a human driving the car.
 
 Udacity has provided simulation which can be used to train a neural model to learn how to drive on two tracks. The simulation can also take the trained model as input and can use the learning to drive around the tracks.
 
 ----
 
 ## Project Goals
-The goals  of this project are the following:
+
+The goals of this project are as follows:
+
 * Collect data and train a neural model to drive on track1.
 * The trained model should drive around track1 without leaving the lanes or colliding.
 * Reflect on the choice for pre-processing techniques used for images, models and share a video with autonomous driving.
@@ -35,7 +37,7 @@ Optional Goal:
 
 ## Reflection
 
-Track simulation for the project is cloned from [here](https://github.com/udacity/self-driving-car-sim)
+Track simulation for the project is cloned from [here](https://github.com/udacity/self-driving-car-sim).
 
 To begin training, the simulation needs to be started. The simulation provides two tracks and two modes of operations, training and autonomous.
 The data required for training the model needs to be collected by recording the drive done by you using keyboard, mouse, Playstation and xbox controllers.
@@ -69,9 +71,9 @@ Sample of generated images:
 
 ---
 
-![@No Track1 | center | img01](./img/track1_imgs.png)
+![@Track1 | center | img01](./img/track1_imgs.png)
 
-![@No Track2 | center | img02](./img/track2_imgs.png)
+![@Track2 | center | img02](./img/track2_imgs.png)
 
 ### MODEL TRAINING
 
@@ -95,36 +97,35 @@ flipped_steer = -1 * steer
 
 I also used the image augmentation technique explained by Vivek Yadav (referred in last project's review) to brighten and translate the images. I didn't go ahead with shadowing of the images as none of the tracks had any shadow and just brightening and translation gave me good results.
 
-![@No generated | center | img03](./img/generated.png)
+![@Generated Images | center | img03](./img/generated.png)
 
 #### NEURAL NETWORK MODEL
 
 This training data was fed to the following model which evolved over the time from Nvidia's architecture.
 
-![@No Model | center | img04](./img/model.png)
+![@Model | center | img04](./img/model.png)
 
-The model had the first lambda layer where the image was normalzied:
+The model had the first lambda layer where the image was normalized:
 ```
 lambda x: x/127.5 - 1.0
 ```
 The ConvNet architecture is composed of 5 repeated layers and then dropout layer, followed by 3 Dense layers and then an output layer.
 
-First three convolution layer are of 5 x 5, with 2 x 2 strides. And last 2 convolution layer has 3 x 3 kernel with 1 x 1 strides.
-For each of the convolution layers and dense layers I have used ELU (Exponential linear unit) as the activation unit for faster training convergence.
+First three convolution layer are of 5 x 5 kernel, with 2 x 2 strides. And last 2 convolution layer has 3 x 3 kernel with 1 x 1 strides. For each of the convolution layers and dense layers I have used **ELU (Exponential linear unit)** as the activation unit for faster training convergence.
 
-The model got evolved from Nvidia's architecture and a dropout layer (0.5 keep_probs) was added between the convolution layer and before the dense layers for regularization. I also used l2 regularization (0.001) at each convolution and dense layer. I saw that using dropouts between the convolution layer resulted in poor track performance. 
+The model got evolved from Nvidia's architecture and a **dropout layer (0.5 keep_probs)** was added between the convolution layer and before the dense layers for regularization. I also used **l2 regularization (0.001)** at each convolution and dense layer. I saw that using dropouts between the convolution layer resulted in poor track performance. 
 
 I had initially removed the top Dense layer (with 1164 units). This worked well, but towards the training for track2 I increased the Dense unit from 100, 50, 10 to 256, 96, 24 respectively. This was done as an experiment when the car on track2 would sometimes get stuck at one the turns.
 
-For training the model for track1 I use the learning rate as 0.001 and number of epochs to 10. Post 10 epochs I would see the validation cost rising. Also the the model trained with these hyper parameters gave descent results.
+For training the model for **track1** I use the **learning rate as 0.001** and number of **epochs to 10**. Post 10 epochs I would see the validation cost rising. Also the the model trained with these hyper parameters gave descent results.
 
-As for training the model for track2 I reduced the learning rate to 0.0003 and increased the number of epochs to 50. I ended up doing this as even though the validation cost with 0.001 learning rate and 20 epochs was low, the performance on track2 was horrible. Even after added more data, the performance did not improve much.
+As for training the model for **track2** I reduced the **learning rate to 0.0003** and increased the number of **epochs to 50**. I ended up doing this as even though the validation cost with 0.001 learning rate and 20 epochs was low, the performance on track2 was horrible. Even after added more data, the performance did not improve much.
 
-For both the above trainings I had set the batch size to 128. 
+For both the above trainings I had set the **batch size to 128**. 
 
 #### VIDEOS
 
-<a href="http://www.youtube.com/watch?feature=player_embedded&v=https://youtu.be/DNcGFPeWzMs" target="_blank"><img src="http://img.youtube.com/vi/https://youtu.be/DNcGFPeWzMs/0.jpg" 
+<a href="http://www.youtube.com/watch?feature=player_embedded&v=DNcGFPeWzMs" target="_blank"><img src="http://img.youtube.com/vi/DNcGFPeWzMs/0.jpg" 
 alt="IMAGE ALT TEXT HERE" width="480" height="270" border="10" /></a>
 
 
