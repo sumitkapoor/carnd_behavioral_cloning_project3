@@ -52,11 +52,16 @@ image = cv2.cvtColor(image, cv2.COLOR_RGB2YUV)
 ```
 * The image was normalized as a part of model where the image data was divided by 127.5 and subtracted 1.0.
 
-Sample of generated images:
+Sample of images for track1:
 
 ---
 
 ![@img01 Track1 | center | img01](./img/track1_imgs.png "img01: Track1 Images")
+
+
+Sample of images for track2:
+
+---
 
 ![@img02 Track2 | center | img02](./img/track2_imgs.png "img02: Track2 Images")
 
@@ -81,6 +86,10 @@ flipped_steer = -1 * steer
 ```
 
 I also used the image augmentation technique explained by **Vivek Yadav** (referred in last project's review) to brighten and translate the images. I didn't go ahead with shadowing of the images as none of the tracks had any shadow and just brightening and translation gave me good results.
+
+Sample of generated images:
+
+---
 
 ![@img03 Generated Images | center | img03](./img/generated.png "img03: Generated Images")
 
@@ -110,11 +119,11 @@ For both the above trainings I had set the **batch size to 128**.
 
 #### VIDEOS
 
-<a href="http://www.youtube.com/watch?feature=player_embedded&v=DNcGFPeWzMs" target="_blank"><img src="http://img.youtube.com/vi/DNcGFPeWzMs/0.jpg" 
-alt="Track1" width="320" height="240" border="10" /></a>
+###### Track 1 run
+[![@img05 Track1 | left | img05](http://img.youtube.com/vi/DNcGFPeWzMs/0.jpg)](http://www.youtube.com/watch?v=DNcGFPeWzMs)
 
-<a href="http://www.youtube.com/watch?feature=player_embedded&v=7dLvKufdfUE" target="_blank"><img src="http://img.youtube.com/vi/7dLvKufdfUE/0.jpg" 
-alt="Track2" width="320" height="240" border="10" /></a>
+###### Track 2 run
+[![@img06 Track2 | right | img06](http://img.youtube.com/vi/7dLvKufdfUE/0.jpg)](http://www.youtube.com/watch?v=7dLvKufdfUE)
 
 
 ### FUTURE WORK

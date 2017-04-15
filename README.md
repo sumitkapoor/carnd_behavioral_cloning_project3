@@ -136,7 +136,10 @@ For both the above trainings I had set the **batch size to 128**.
 
 #### VIDEOS
 
+###### Track 1 run
 [![@img05 Track1 | left | img05](http://img.youtube.com/vi/DNcGFPeWzMs/0.jpg)](http://www.youtube.com/watch?v=DNcGFPeWzMs)
+
+###### Track 2 run
 [![@img06 Track2 | right | img06](http://img.youtube.com/vi/7dLvKufdfUE/0.jpg)](http://www.youtube.com/watch?v=7dLvKufdfUE)
 
 ### FUTURE WORK
