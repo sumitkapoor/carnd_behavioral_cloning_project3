@@ -37,7 +37,7 @@ Later on I found out the data isn't enough to train my model and also added seve
 
 ### PRE-PROCESS DATA
 
-The images that was generated in training was of the size 160 * 320. As I was referring [Nvidea's paper](http://images.nvidia.com/content/tegra/automotive/images/2016/solutions/pdf/end-to-end-dl-using-px.pdf) for creating my model:
+The images that was generated in training was of the size 160 * 320. As I was referring [Nvidia's paper](http://images.nvidia.com/content/tegra/automotive/images/2016/solutions/pdf/end-to-end-dl-using-px.pdf) for creating my model:
 * I cropped the above 60 rows and 20 rows from the bottom to get an image of size 80 * 320. This removed the car hood and most of the natural beauty around the road.
 ```
 image = image[60:140, :]
@@ -56,9 +56,9 @@ Sample of generated images:
 
 ---
 
-![@Track1 | center | img01](./img/track1_imgs.png)
+![@img01 Track1 | center | img01](./img/track1_imgs.png "img01: Track1 Images")
 
-![@Track2 | center | img02](./img/track2_imgs.png)
+![@img02 Track2 | center | img02](./img/track2_imgs.png "img02: Track2 Images")
 
 ### MODEL TRAINING
 
@@ -82,13 +82,13 @@ flipped_steer = -1 * steer
 
 I also used the image augmentation technique explained by **Vivek Yadav** (referred in last project's review) to brighten and translate the images. I didn't go ahead with shadowing of the images as none of the tracks had any shadow and just brightening and translation gave me good results.
 
-![@Generated Images | center | img03](./img/generated.png)
+![@img03 Generated Images | center | img03](./img/generated.png "img03: Generated Images")
 
 #### NEURAL NETWORK MODEL
 
 This training data was fed to the following model which evolved over the time from Nvidia's architecture.
 
-![@Model | center | img04](./img/model.png)
+![@img04 Model | center | img04](./img/model.png "img04: Neural Network Model")
 
 The model had the first lambda layer where the image was normalized:
 ```
@@ -111,7 +111,10 @@ For both the above trainings I had set the **batch size to 128**.
 #### VIDEOS
 
 <a href="http://www.youtube.com/watch?feature=player_embedded&v=DNcGFPeWzMs" target="_blank"><img src="http://img.youtube.com/vi/DNcGFPeWzMs/0.jpg" 
-alt="IMAGE ALT TEXT HERE" width="420" height="270" border="10" /></a>
+alt="Track1" width="320" height="240" border="10" /></a>
+
+<a href="http://www.youtube.com/watch?feature=player_embedded&v=7dLvKufdfUE" target="_blank"><img src="http://img.youtube.com/vi/7dLvKufdfUE/0.jpg" 
+alt="Track2" width="320" height="240" border="10" /></a>
 
 
 ### FUTURE WORK
