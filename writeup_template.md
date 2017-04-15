@@ -111,7 +111,7 @@ For both the above trainings I had set the **batch size to 128**.
 #### VIDEOS
 
 <a href="http://www.youtube.com/watch?feature=player_embedded&v=DNcGFPeWzMs" target="_blank"><img src="http://img.youtube.com/vi/DNcGFPeWzMs/0.jpg" 
-alt="IMAGE ALT TEXT HERE" width="480" height="270" border="10" /></a>
+alt="IMAGE ALT TEXT HERE" width="420" height="270" border="10" /></a>
 
 
 ### FUTURE WORK

@@ -71,9 +71,9 @@ Sample of generated images:
 
 ---
 
-![@Track1 | center | img01](./img/track1_imgs.png)
+![@img01 Track1 | center | img01](./img/track1_imgs.png)
 
-![@Track2 | center | img02](./img/track2_imgs.png)
+![@img02 Track2 | center | img02](./img/track2_imgs.png)
 
 ### MODEL TRAINING
 
@@ -97,13 +97,13 @@ flipped_steer = -1 * steer
 
 I also used the image augmentation technique explained by Vivek Yadav (referred in last project's review) to brighten and translate the images. I didn't go ahead with shadowing of the images as none of the tracks had any shadow and just brightening and translation gave me good results.
 
-![@Generated Images | center | img03](./img/generated.png)
+![@img03 Generated Images | center | img03](./img/generated.png)
 
 #### NEURAL NETWORK MODEL
 
 This training data was fed to the following model which evolved over the time from Nvidia's architecture.
 
-![@Model | center | img04](./img/model.png)
+![@img04 Model | center | img04](./img/model.png)
 
 The model had the first lambda layer where the image was normalized:
 ```
@@ -126,7 +126,7 @@ For both the above trainings I had set the **batch size to 128**.
 #### VIDEOS
 
 <a href="http://www.youtube.com/watch?feature=player_embedded&v=DNcGFPeWzMs" target="_blank"><img src="http://img.youtube.com/vi/DNcGFPeWzMs/0.jpg" 
-alt="IMAGE ALT TEXT HERE" width="480" height="270" border="10" /></a>
+alt="Track1" width="240" height="180" border="10" /></a>
 
 
 ### FUTURE WORK
