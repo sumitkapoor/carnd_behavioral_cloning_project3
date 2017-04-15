@@ -5,6 +5,8 @@ import sklearn
 from utils.data_processing import *
 
 def behaviour_cloning_generator(data, batch_size = 128):
+    # data is list of tuples of the form:
+    # (left_image_path, center_image_path, right_image_path, steer_angle)
     num_samples = len(data)
     while 1:
         np.random.shuffle(data)
@@ -52,7 +54,6 @@ def behaviour_cloning_generator(data, batch_size = 128):
                 images.append(x_image)
                 angles.append(y_angle)
 
-            # trim image to only see section with road
             X_train = np.array(images)
             y_train = np.array(angles)
 
