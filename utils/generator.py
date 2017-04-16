@@ -5,8 +5,14 @@ import sklearn
 from utils.data_processing import *
 
 def behaviour_cloning_generator(data, batch_size = 128):
-    # data is list of tuples of the form:
-    # (left_image_path, center_image_path, right_image_path, steer_angle)
+    """"
+    INPUT:
+         data: list of tuples of the form:
+         (left_image_path, center_image_path, right_image_path, steer_angle)
+    OUTPUT:
+         returns a generator with X_train as a numpy array of image and y_train
+         as a numpy array of corresponding steering angles
+    """
     num_samples = len(data)
     while 1:
         np.random.shuffle(data)

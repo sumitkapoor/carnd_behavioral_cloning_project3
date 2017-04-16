@@ -7,6 +7,15 @@ from keras.regularizers import l2
 class Models(object):
 
     def __init__(self, mtype='nvidia', batch_size=32, input_shape=(160, 320, 3)):
+        """
+        INPUT:
+            mtype : The type of the model that needs to be created, default nvidea
+            batch_size : Batch size for model training
+            input_shape : input shape of the data that the model will use for training
+
+        Creates a model based on the model type. Model can be refrenced using public attribute model.
+
+        """
         self.batch_size = batch_size
         self.input_shape = input_shape
         self.model = None
@@ -15,6 +24,19 @@ class Models(object):
             self.model = self._create_nvidia_model()
 
     def _create_nvidia_model(self):
+        """
+        Based on the architecture published by Nvidia:
+        http://images.nvidia.com/content/tegra/automotive/images/2016/solutions/pdf/end-to-end-dl-using-px.pdf
+
+        The model starts with the Lamba layer where the image is normalized.
+
+        The model then has 5 convolution layers, followed by a dropout layer and then 3 Dense layer.
+        The output for the model is 1 unit.
+
+        ELU has been used as activation unit.
+
+        l2 regularization has also been used at each layer.
+        """
         # Using l2 regularization
         model = Sequential()
 
